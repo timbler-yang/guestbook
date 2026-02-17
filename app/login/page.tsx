@@ -46,18 +46,18 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-zinc-950">
       <div className="w-full max-w-sm px-4">
         <h1 className="mb-2 text-center text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-          {mode === "login" ? "Login" : "Sign Up"}
+          {mode === "login" ? "로그인" : "회원가입"}
         </h1>
         <p className="mb-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
           {mode === "login"
-            ? "Sign in to leave a message"
-            : "Create an account to get started"}
+            ? "로그인하고 메시지를 남겨보세요"
+            : "계정을 만들어 시작하세요"}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
             type="email"
-            placeholder="Email"
+            placeholder="이메일"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -65,7 +65,7 @@ export default function LoginPage() {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="비밀번호"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -83,32 +83,32 @@ export default function LoginPage() {
             className="w-full rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
           >
             {loading
-              ? "Loading..."
+              ? "처리 중..."
               : mode === "login"
-                ? "Login"
-                : "Sign Up"}
+                ? "로그인"
+                : "회원가입"}
           </button>
         </form>
 
         <p className="mt-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
           {mode === "login" ? (
             <>
-              Don&apos;t have an account?{" "}
+              계정이 없으신가요?{" "}
               <button
                 onClick={() => { setMode("signup"); setError(""); }}
                 className="font-medium text-zinc-900 hover:underline dark:text-zinc-100"
               >
-                Sign Up
+                회원가입
               </button>
             </>
           ) : (
             <>
-              Already have an account?{" "}
+              이미 계정이 있으신가요?{" "}
               <button
                 onClick={() => { setMode("login"); setError(""); }}
                 className="font-medium text-zinc-900 hover:underline dark:text-zinc-100"
               >
-                Login
+                로그인
               </button>
             </>
           )}
