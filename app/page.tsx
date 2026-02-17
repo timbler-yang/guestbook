@@ -97,7 +97,7 @@ export default function Home() {
 
     if (!error) {
       // Update all existing guestbook entries with new nickname
-      if (user && nickname) {
+      if (user) {
         await supabase
           .from("guestbook")
           .update({ nickname: trimmed })
@@ -124,8 +124,17 @@ export default function Home() {
     });
 
     if (!error) {
+      // Update all existing guestbook entries with new nickname
+      if (user) {
+        await supabase
+          .from("guestbook")
+          .update({ nickname: trimmed })
+          .eq("author_id", user.id);
+      }
+
       setNickname(trimmed);
       setNewNickname("");
+      await fetchEntries();
     }
     setNicknameLoading(false);
   }
